@@ -46,11 +46,11 @@
         </div>
 
 
-        <a mat-list-item >
+        <a mat-list-item>
           <mat-icon mat-list-icon>
             library_music
           </mat-icon>
-          <p mat-line> New Releases </p>
+          <p mat-line><a routerLink="/newReleases" routerLinkActive="active"> New Releases </a></p>
         </a>
 
         <a mat-list-item>
@@ -62,22 +62,23 @@
 
         <mat-divider></mat-divider>
 
-        <a id="push-bottom" mat-list-item >
+        <a id="push-bottom" mat-list-item>
           <mat-icon mat-list-icon>
             info_outline
           </mat-icon>
-          <p mat-line> About </p>
+          <p mat-line><a routerLink="/about" routerLinkActive="active"> About </a></p>
         </a>
       </mat-nav-list>
 
     </mat-sidenav>
-    
+
     <mat-sidenav-content class="sidenav-content">
-      
+
       <!-- Main content -->
-      
+      <router-outlet></router-outlet>
+      <app-about></app-about> 
       <!-- ------------ -->
-      
+
       <div class="bottom-spacer"></div>
     </mat-sidenav-content>
   </mat-sidenav-container>
