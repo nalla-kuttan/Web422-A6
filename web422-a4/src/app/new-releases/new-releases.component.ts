@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import data from '../data/new-releases.json';
+
 @Component({
   selector: 'app-new-releases',
   templateUrl: './new-releases.component.html',
