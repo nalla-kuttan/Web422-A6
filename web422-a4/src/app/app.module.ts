@@ -16,11 +16,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ArtistDiscographyComponent
   ],
   imports: [
     BrowserModule,
