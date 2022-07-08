@@ -18,9 +18,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 import { AboutComponent } from './about/about.component';
-import { AlbumComponent } from './album/album.component';
-import { NewReleasesComponent } from './new-releases/new-releases.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -28,9 +25,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     ArtistDiscographyComponent,
     AboutComponent,
-    AlbumComponent,
-    NewReleasesComponent,
-    NotFoundComponent
   ],
   imports: [
     BrowserModule,
