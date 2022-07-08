@@ -17,12 +17,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
+import { AboutComponent } from './about/about.component';
+import { AlbumComponent } from './album/album.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArtistDiscographyComponent
+    ArtistDiscographyComponent,
+    AboutComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
