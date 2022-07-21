@@ -1,6 +1,9 @@
 <div>
     <h1>{{ album.name }}</h1>
     <p>Full track listing for {{ album.name }}</p>
+    <p>
+      Click the <mat-icon mat-list-icon>queue_music</mat-icon> to add a song from your favourites list
+    </p>
     <br />
   </div>
   
@@ -25,7 +28,7 @@
             aria-label="Artist selection"
             *ngFor="let artist of album.artists"
           >
-            <a routerLink="/artist" routerLinkActive="active">
+            <a [routerLink]="['/artist', artist.id]">
               <mat-chip>{{ artist.name }}</mat-chip>
             </a>
           </mat-chip-list>
@@ -49,13 +52,15 @@
   
   <mat-list>
     <!-- Single "Responsive" Material List Item-->
-    <mat-list-item *ngFor="let item of album.tracks.items">
-      <mat-icon mat-list-icon>queue_music</mat-icon>
+    <!-- item->track -->
+    <mat-list-item *ngFor="let track of album.tracks.items">
+      <mat-icon mat-list-icon (click)="addToFavourites(track.id)">queue_music</mat-icon>
       <div mat-line>
         <mat-card>
           <mat-card-content
-            >{{ item.track_number }} {{ item.name }} 4 -
-            {{ (item.duration_ms / 60000).toFixed(2) }}
+            >{{ track.track_number }} {{ track.name }} 4 -
+            {{ (track.duration_ms / 60000).toFixed(2) }}
+            <div *ngIf="track.preview_url"><br /><audio controls [src]="track.preview_url"></audio></div>
             <!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
           </mat-card-content>
         </mat-card>
