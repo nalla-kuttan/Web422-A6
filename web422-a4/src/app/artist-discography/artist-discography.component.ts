@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import albumData from '../data/Albums.json';
-import artistData from '../data/Artist.json';
+import { Subscription } from 'rxjs';
+import { MusicDataService } from '../music-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,20 +11,37 @@ import artistData from '../data/Artist.json';
 })
 export class ArtistDiscographyComponent implements OnInit {
 
+  private albumsSubscribe: Subscription | undefined;
+  private artistSubscribe: Subscription | undefined;
   albums: any;
   artist: any;
+  private id: any;
 
-  constructor() { }
+  constructor(private musicDataService: MusicDataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.albums = albumData.items.filter(
-      (curValue, index, self) =>
-        self.findIndex(
-          (t) => t.name.toUpperCase() === curValue.name.toUpperCase()
-        ) === index
-    );
+    this.id = this.route.snapshot.params['id'];
+    this.artistSubscribe = this.musicDataService
+      .getArtistById(this.id)
+      .subscribe((data) => {
+        return (this.artist = data);
+      });
 
-    this.artist = artistData;
+    this.albumsSubscribe = this.musicDataService
+      .getAlbumsByArtistId(this.id)
+      .subscribe((data) => {
+        return (this.albums = data.items.filter(
+          (curValue: any, index: any, self: any) =>
+            self.findIndex(
+              (t: any) => t.name.toUpperCase() === curValue.name.toUpperCase()
+            ) === index
+        ));
+      });
+  }
+
+  ngOnDestroy() {
+    this.albumsSubscribe?.unsubscribe();
+    this.artistSubscribe?.unsubscribe();
   }
 
 }
