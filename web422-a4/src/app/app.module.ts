@@ -23,6 +23,7 @@ import { AlbumComponent } from './album/album.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AboutComponent,
     NewReleasesComponent,
     AlbumComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
