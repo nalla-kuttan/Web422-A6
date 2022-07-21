@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     NewReleasesComponent,
     AlbumComponent,
     SearchResultComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,
