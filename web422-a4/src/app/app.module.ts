@@ -18,6 +18,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 import { AboutComponent } from './about/about.component';
+import { NewReleasesComponent } from './new-releases/new-releases.component';
+import { AlbumComponent } from './album/album.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -25,6 +30,8 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     ArtistDiscographyComponent,
     AboutComponent,
+    NewReleasesComponent,
+    AlbumComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,10 @@ import { AboutComponent } from './about/about.component';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

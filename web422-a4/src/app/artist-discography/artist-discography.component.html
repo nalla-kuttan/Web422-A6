@@ -1,26 +1,61 @@
-<mat-card
-    [style.background]="'url(' + 'https://via.placeholder.com/640' + ') no-repeat center center'"
-    [style.background-size]="'cover'" [style.height]="'450px'">
-</mat-card>
-<br /><br />
-<h1>Full Discography</h1>
-
-<div class="fxlayout">
-
+<div>
+    <h1 class="artist-name">{{ artist.name }}</h1>
+    <p>
+      Full discography for
+      <strong
+        ><a href="{{ artist.external_urls.spotify }}">
+          {{ artist.name }}</a
+        ></strong
+      ><br />
+      Click the album cover for more information.
+    </p>
+    <br />
+  </div>
+  
+  <a href="{{ artist.external_urls.spotify }}">
+    <mat-card 
+      [style.background]="
+        'url(' + artist.images[0].url + ') no-repeat center center'
+      "
+      [style.background-size]="'cover'"
+      [style.height]="'550px'"
+      [style.width] = "'900px'"
+    >
+    </mat-card>
+  </a>
+  <br /><br />
+  <h2 class="full-discography">Full Discography</h2>
+  <hr />
+  
+  <div class="fxlayout">
     <!-- Single "Responsive" Card-->
-    <div class="fxflex" [style.margin]="'20px'">
-        <mat-card [style.min-width]="'200px'">
-            <mat-card-header>
-                <mat-card-title>This is a Sample Album Title</mat-card-title>
-                <mat-card-subtitle>Album Title</mat-card-subtitle>
-            </mat-card-header>
-
-            <img mat-card-image class="album-cover"
-                src="https://via.placeholder.com/640" alt="album art">
-            <strong>Release Date: </strong>2021/02/12<br />
-            <strong>Tracks: </strong>22
-        </mat-card>
+    <div
+      fxFlex
+      [style.margin]="'20px'"
+      *ngFor="let album of albums"
+      fxLayoutAlign="start start"
+    >
+      <mat-card
+        [style.min-width]="'200px'"
+        fxFlexAlign="stretch"
+        [style.padding-bottom]="'3em'"
+      >
+        <mat-card-header [style.margin-bottom]="'2em'">
+          <mat-card-title>{{ album.name }}</mat-card-title>
+          <mat-card-subtitle>Album Title</mat-card-subtitle>
+        </mat-card-header>
+  
+        <a [routerLink]="['/album']">
+          <img
+            mat-card-image
+            class="album-cover"
+            src="{{ album.images[0].url }}"
+            alt="album art"
+          />
+        </a>
+        <strong>Release Date: </strong>{{ album.release_date }}<br />
+        <strong>Tracks: </strong>{{ album.total_tracks }}
+      </mat-card>
     </div>
     <!-- -->
-
-</div>
+  </div>
