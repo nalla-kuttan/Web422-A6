@@ -6,7 +6,12 @@
 * 
 *  Name: Ruban Manoj Paul  |  Student ID: 144008208  |  Date: 5th August 2022
 *
+*  Angular App (Deployed) Link: _____________________________________________________
+*
+*  User API (Heroku) Link: __________________________________________________________
+*
 ********************************************************************************/ 
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
