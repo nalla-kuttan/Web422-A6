@@ -6,7 +6,7 @@
 * 
 *  Name: Ruban Manoj Paul  |  Student ID: 144008208  |  Date: 5th August 2022
 *
-*  Angular App (Deployed) Link: _____________________________________________________
+*  Angular App (Deployed) Link: https://web422-a6-rubanmanojpaul.vercel.app/
 *
 *  User API (Heroku) Link: https://morning-depths-68479.herokuapp.com/api/user
 *
