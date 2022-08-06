@@ -1,46 +1,56 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from './../environments/environment';
-import { User } from '/User';
-import { RegisterUser } from './RegisterUser';
+
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
+
+import User from './User';
+import { RegisterUser } from './RegisterUser';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthService {
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  constructor(private http: HttpClient) {}
 
-  getToken(): string {
+  public getToken(): string | null {
     return localStorage.getItem('access_token');
   }
 
-  readToken(): User {
-    const token = this.getToken();
-    return helper.decodeToken(token);
+  public readToken(): User | null {
+    const token = localStorage.getItem('access_token');
+
+    if (token) {
+      return helper.decodeToken(token);
+    } else {
+      return null;
+    }
   }
 
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    if (token) return true;
-    return false;
+    const token = localStorage.getItem('access_token');
+    console.log(token);
+    if (token) {
+      console.log('token exists');
+      return true;
+    } else {
+      console.log('no token');
+      return false;
+    }
   }
 
   login(user: User): Observable<any> {
-    const url = `${environment.userAPIBase}/login`;
-    return this.http.post<any>(url, user);
+    return this.http.post<any>(`${environment.userAPIBase}/login`, user);
   }
 
-  logout(): void {
+  logout() {
     localStorage.removeItem('access_token');
   }
 
-  register(registerUser: RegisterUser): Observable<any> {
-    const url = `${environment.userAPIBase}/register`;
-    return this.http.post<any>(url, registerUser);
+  register(user: RegisterUser): Observable<any> {
+    return this.http.post<any>(`${environment.userAPIBase}/register`, user);
   }
 }
