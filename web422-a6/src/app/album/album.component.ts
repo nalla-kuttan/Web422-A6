@@ -10,10 +10,8 @@ import { MusicDataService } from '../music-data.service';
   styleUrls: ['./album.component.css'],
 })
 export class AlbumComponent implements OnInit {
-  //album: Array<any>;
   private albumSubscribe!: Subscription;
   album: any;
-  //private albumSubscribe: any;
   private id: any;
 
   constructor(
@@ -31,17 +29,16 @@ export class AlbumComponent implements OnInit {
       });
   }
 
-  addToFavourites(trackID: any) {
-    this.musicDataService.addToFavourites(trackID).subscribe(
-      (msg) => {
+  addToFavourites(trackId: string): void {
+    this.musicDataService.addToFavourites(trackId).subscribe(
+      (data) => {
         this.snackBar.open('Adding to Favourites...', 'Done', {
           duration: 1500,
         });
       },
       (err) => {
-        console.log(err);
-        this.snackBar.open('Unable to add song to Favourites', '', {
-          duration: 1500,
+        this.snackBar.open('Unable to add song to Favourites...', 'Done', {
+          duration: 2500,
         });
       }
     );
