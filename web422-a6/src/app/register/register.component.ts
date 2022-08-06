@@ -8,7 +8,6 @@ import { RegisterUser } from './../RegisterUser';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  //registerUser: RegisterUser = {} as RegisterUser;
   registerUser: RegisterUser = { userName: '', password: '', password2: '' };
   warning: String = '';
   success: boolean = false;
